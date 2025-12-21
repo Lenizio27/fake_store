@@ -1,4 +1,7 @@
+let btFocus = document.getElementById("btFocus");
+let timerFocus = 25
 function periodoConcentracao(){
-    let divTimerFocus = document.getElementById("divTimerFocus");
-    divTimerFocus.textContent = "";
+    let timer = document.getElementById("timer");
+    timer.textContent = 10
 }
+btFocus.addEventListener("click", periodoConcentracao)

@@ -1,9 +1,18 @@
 import { useState } from "react";
 import { CardProdutosEmAlta } from "../components/ProductCard";
 import ImgTenis2 from "../assets/images/tenis_2.png";
+import { useEffect } from "react";
 
 const ProductListingPage = () => {
     const [open, setOpen] = useState(false)
+
+    useEffect(() => {
+    if (open) {
+        document.body.style.overflow = "hidden";
+    } else {
+        document.body.style.overflow = "auto";
+    }
+    }, [open]);
 
     const arrayFiltroProdutos = [
         {
@@ -75,23 +84,25 @@ const ProductListingPage = () => {
                         ))}
                     </aside>
                     {/* radios mobile */}
-                    <aside className={`md:hidden left-0 fixed flex-4 bg-s7 p-4 w-[308px] h-[calc(100vh-80px)] top-[80px] ${open ? `translate-x-1 scale-x-100` : `scale-x-95 opacity-0 `} transition-all z-10`}>
-                        <h3>Filtrar por</h3>
-                        <hr />
-                        {arrayFiltroProdutos.map((item) => (
-                            <div>
-                                <h2 className="font-bold my-1">{item.title}</h2>
-                                {item.radios.map(a => 
-                                <p className="flex items-center">
-                                    <input 
-                                    className="appearance-none w-4 h-4 border border-gray-400 rounded-sm checked:bg-c2 checked:border-purple-600 checked:before:content-['✓'] flex items-center text-white mr-1"
-                                    type="checkbox" 
-                                    id="radioCheck"/>
-                                    {a}
-                                </p>
-                                )}
-                            </div>
-                        ))}
+                    <aside className={`transition-all md:hidden w-full absolute bg-b1 h-full ${open ? `` : `opacity-0 `} z-[10]`}>
+                        <div className={`${open ? `translate-x-1 scale-x-100` : `scale-x-95 opacity-0 `} left-0 fixed flex-4 bg-s7 p-4 w-[308px] h-[calc(100vh-80px)] top-[80px] transition-all z-10`}>
+                            <h3>Filtrar por</h3>
+                            <hr />
+                            {arrayFiltroProdutos.map((item) => (
+                                <div>
+                                    <h2 className="font-bold my-1">{item.title}</h2>
+                                    {item.radios.map(a =>
+                                    <p className="flex items-center">
+                                        <input
+                                        className="appearance-none w-4 h-4 border border-gray-400 rounded-sm checked:bg-c2 checked:border-purple-600 checked:before:content-['✓'] flex items-center text-white mr-1"
+                                        type="checkbox"
+                                        id="radioCheck"/>
+                                        {a}
+                                    </p>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
                     </aside>
                     <div className="flex-8 flex flex-wrap gap-2 px-2 justify-around">
                        {arrayCardsEmAlta.map(item => (
