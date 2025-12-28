@@ -15,6 +15,9 @@ function pushTimer(timer){
         Focus += 25;
         return
     }
+    if(Focus === 625){
+        Focus = 600;
+    }
     let timeoutValue = Math.ceil(Focus / 50);
     timerFocus.textContent = Focus;
     timeout.textContent = timeoutValue + ` pausas`

@@ -41,7 +41,6 @@ main{
         padding: 10px;
         background-color: var(--p2);
     }
-
     #sectionFocus{
         flex: 1;
         flex-basis: 300px;
@@ -110,16 +109,56 @@ main{
                 
             }
     }
+
     /* Metas Diarias */
     #sectionGoal{
         flex: 1;
         flex-basis: 300px;
     }
+
     /* Tarefas */
     #sectionTasks{
         flex-basis: 300px;
     }
 }
+
+.timer-container {
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+
+svg {
+  transform: rotate(-90deg);
+}
+
+circle {
+  fill: none;
+  stroke-width: 10;
+}
+
+.background {
+  stroke: #1e2430;
+}
+
+.progress {
+  stroke: #7b7bff;
+  stroke-linecap: round;
+  stroke-dasharray: 565;
+  stroke-dashoffset: 565;
+  transition: stroke-dashoffset 1s linear;
+}
+
+.time {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
+  font-family: sans-serif;
+  color: white;
+}
+
 
 /* Footer */
 footer{

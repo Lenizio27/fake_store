@@ -30,9 +30,31 @@
                     <button id="btFocus">Iniciar Tempo de foco</button>
                 </section>
                 <!--  -->
-                <section id="sectionGoal" class="boxSections"></section>
+                <section id="sectionGoal" class="boxSections">
+                    <div class="timer-container">
+  <svg width="200" height="200">
+    <circle
+      cx="100"
+      cy="100"
+      r="90"
+      class="background"
+    />
+    <circle
+      cx="100"
+      cy="100"
+      r="90"
+      class="progress"
+    />
+  </svg>
+
+  <div class="time">04:23</div>
+</div>
+
+                </section>
                 <!--  -->
-                <section id="sectionTasks" class="boxSections"3></section>
+                <section id="sectionTasks" class="boxSections"3>
+
+                </section>
             </div>
         </main>
         <footer>
@@ -40,5 +62,31 @@
         </footer>
     </div>
     <script src="script.js"></script>
+    <script>
+        const TOTAL_TIME = 300; // 5 minutos
+        let timeLeft = TOTAL_TIME;
+
+        const progress = document.querySelector('.progress');
+        const timeDisplay = document.querySelector('.time');
+
+        const circumference = 565;
+
+        function updateTimer() {
+        const minutes = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+        const seconds = String(timeLeft % 60).padStart(2, '0');
+        timeDisplay.textContent = `${minutes}:${seconds}`;
+
+        const offset = circumference - (timeLeft / TOTAL_TIME) * circumference;
+        progress.style.strokeDashoffset = offset;
+
+        if (timeLeft > 0) {
+            timeLeft--;
+        }
+        }
+
+        setInterval(updateTimer, 1000);
+        // updateTimer();
+</script>
+
 </body>
 </html>
