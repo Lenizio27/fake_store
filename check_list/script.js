@@ -4,7 +4,7 @@ let btRight = document.getElementById("btRight");
 let timerFocus = document.getElementById("timer");
 let timeout = document.getElementById("timeout");
 let Focus = 25;
-
+let ativacaoPeriodo = 0;
 // Function Time timerFocus
 function pushTimer(timer){
     timer === `+` ? Focus += 25 : Focus -= 25;
@@ -25,6 +25,13 @@ btLeft.addEventListener("click", ()=> pushTimer("-"));
 
 // Fucntion Timer
 function ativarTimer(){
+    if(ativacaoPeriodo != 0){
+        let confirmacao = confirm("voce tem certeza que deseja comecar outro timer?")
+        if(confirmacao === true){
+            timeLeft = 0;
+        }
+    }
+    ativacaoPeriodo += 1;
     const TOTAL_TIME = ((Focus / 25) * 1500) // 5 minutos
     let timeLeft = TOTAL_TIME;
     
@@ -45,7 +52,6 @@ function ativarTimer(){
         timeLeft--;
     }
     }
-    
     setInterval(updateTimer, 1000);
 }
 btFocus.addEventListener("click", ativarTimer)

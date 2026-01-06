@@ -124,6 +124,10 @@ main{
         display: flex;
         justify-content: center;
     }
+    #inputTasks{
+        background-color: #017474;
+        width: 97%;
+    }
 }
 
 .timer-container {
