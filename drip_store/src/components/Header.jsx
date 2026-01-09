@@ -30,7 +30,7 @@ const Header = () => {
             title: "Produtos"
         },
         {
-            route: "/",
+            route: "/Categorias",
             title: "Categorias"
         },
         {
