@@ -133,7 +133,11 @@ main{
         }
         
         #Tarefas{
-
+            display: flex;
+            flex-direction: column;
+            .divTask{
+                color: red;
+            }
         }
 
         #btLimparTarefas{

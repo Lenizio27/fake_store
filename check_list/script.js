@@ -4,6 +4,7 @@ let btLeft = document.getElementById("btLeft");
 let btRight = document.getElementById("btRight");
 let timerFocus = document.getElementById("timer");
 let timeout = document.getElementById("timeout");
+let Tarefas = document.getElementById("Tarefas");
 let Focus = 25;
 let ativacaoPeriodo = 0;
 
@@ -62,7 +63,19 @@ function ativarTimer(){
 btFocus.addEventListener("click", ativarTimer)
 
 // =============== Function Adicionar Tarefas ===============
+
+let tasksSection = localStorage.getItem("minhasTarefas")
 let tasks = [];
+
+if(tasksSection != null){
+    tasks = JSON.parse(tasksSection);
+    for(let i = 0; i < tasks.length; i++){
+        let divTask = document.createElement("p");
+        divTask.classList.add("divTask")
+        divTask.textContent = tasks[i]
+        Tarefas.append(divTask)
+    }
+}
 
 btAddTask.addEventListener("click", AdicionarTarefas)
 function AdicionarTarefas(){
@@ -71,8 +84,14 @@ function AdicionarTarefas(){
         alert("Por favor, informe uma Tarefa validade")
         return
     }
+    // for(let i = 0; i < tasks.length; i++){
+    //     let divTask = document.createElement("p");
+    //     divTask.classList.add("divTask")
+    //     divTask.textContent = tasks[i];
+    //     Tarefas.append(divTask)
+    // }
     tasks.push(tasksUpdate)
-    localStorage.setItem(tasks.length, "oclarroma")
+    localStorage.setItem("minhasTarefas", JSON.stringify(tasks))
     console.log(tasks)
 }
 
