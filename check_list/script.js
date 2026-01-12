@@ -105,6 +105,7 @@ btLimparTarefas.addEventListener("click", ()=>{
     if(tasks != null || tasks == ""){
         let confirmacao = confirm("Tem certeza que deseja prosseguir")
         if(confirmacao == true){
+            tasks=[]
             localStorage.clear()
             Tarefas.textContent = ""
         }else{
