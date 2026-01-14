@@ -147,16 +147,37 @@ main{
                 margin: 0;
                 padding: 10px;
                 align-items: center;
+                transition: .4s;
+            }
+            .divTask:hover{
+                transform: translateY(-1px);
             }
         }
         .lixeiraTarefas{
+            background-color: #741401;
+            right: 5px;
+            font-size: 15px;
+        }
+        .lixeiraTarefas::before{
+            content: "x";
+        }
+
+        .completoTarefas{
+            right: 30px;
+            background-color: #017474;
+        }
+        .completoTarefas::before{
+            content: "ok";
+        }
+        .completos{
+            color: black;
             position: absolute;
             border-radius: 5px;
-            right: 5px;
             width: 20px;
             height: 20px;
-            background-color: #017474;
-
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         #btLimparTarefas{

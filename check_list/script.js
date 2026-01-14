@@ -35,7 +35,9 @@ function ativarTimer(){
     if(ativacaoPeriodo != 0){
         let confirmacao = confirm("voce tem certeza que deseja comecar outro timer?")
         if(confirmacao === true){
-            timeLeft = 0;
+            
+        }else{
+            return
         }
     }
     ativacaoPeriodo += 1;
@@ -59,7 +61,7 @@ function ativarTimer(){
         timeLeft--;
     }
     }
-    setInterval(updateTimer, 1000);
+    let playTimer = setInterval(updateTimer, 1000);
 }
 btFocus.addEventListener("click", ativarTimer)
 
@@ -76,9 +78,12 @@ if(tasksSection != null){
         divTask.textContent = tasks[i]
 
         let lixeira = document.createElement("div")
-        lixeira.classList.add("lixeiraTarefas")
-        
-        divTask.append(lixeira)
+        lixeira.classList.add("lixeiraTarefas", "completos")
+
+        let completo = document.createElement("div")
+        completo.classList.add("completoTarefas", "completos")
+
+        divTask.append(lixeira, completo)
         Tarefas.append(divTask)
     }
 }
@@ -98,9 +103,12 @@ function AdicionarTarefas(){
     divTask.classList.add("divTask")
 
     let lixeira = document.createElement("div")
-    lixeira.classList.add("lixeiraTarefas")
+    lixeira.classList.add("lixeiraTarefas", "completos")
 
-    divTask.append(lixeira)
+    let completo = document.createElement("div")
+    completo.classList.add("completoTarefas", "completos")
+
+    divTask.append(lixeira, completo)
     Tarefas.append(divTask)
 
     console.log(tasks)
