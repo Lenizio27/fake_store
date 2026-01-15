@@ -30,7 +30,7 @@ export const SectionHero = () => {
         </>
      );
 }
-
+// Caso não coloque os props no component destiando dara erro
 export const Sections = ({title, titleAlign, link, children, estilo}) => {
     const align = titleAlign === "center" ? "center" : "left";
     return (

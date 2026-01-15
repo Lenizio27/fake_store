@@ -1,9 +1,9 @@
 import { SectionHero, Sections, SectionOfertaEspecial } from "../components/Section";
 import { CardDestaque, CardDestaqueTipo, CardProdutosEmAlta } from "../components/ProductCard";
 import ImgBlusa from "../assets/images/blusa_destaque.png";
+import ImgFone from "../assets/images/fone_destaque.png";
 import ImgTenis from "../assets/images/tenis_3.png";
 import ImgTenis2 from "../assets/images/tenis_2.png";
-import ImgFone from "../assets/images/fone_destaque.png";
 
 import IconBlusa from "../assets/images/icon_blusa.png"
 import IconCalca from "../assets/images/icon_calca.png"
