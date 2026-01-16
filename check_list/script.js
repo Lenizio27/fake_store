@@ -94,6 +94,15 @@ function AdicionarTarefas(){
     if(tasksUpdate === null || tasksUpdate === "" ){
         alert("Por favor, informe uma Tarefa validade")
         return
+    }else{
+        let nTasks = tasks.length ;
+        while(nTasks > 0){
+            if(tasks[nTasks] == tasksUpdate){
+                alert("Tarefa já adiciona, por favor informe um tarefa nova")
+                return
+            }
+            nTasks --;
+        }
     }
     tasks.push(tasksUpdate)
     localStorage.setItem("minhasTarefas", JSON.stringify(tasks))
