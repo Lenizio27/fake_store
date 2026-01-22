@@ -73,7 +73,7 @@ let tasks = [];
 if(tasksSection != null){
     tasks = JSON.parse(tasksSection);
     for(let i = 0; i < tasks.length; i++){
-        let divTask = document.createElement("p");
+        let divTask = document.createElement("div");
         divTask.classList.add("divTask")
         divTask.textContent = tasks[i]
 
@@ -139,5 +139,9 @@ btLimparTarefas.addEventListener("click", ()=>{
 })
 // =============== Function Deletar Tarefa ===============
 completo.addEventListener("click", ()=>{
-    alert("ola, mundo")
+    let nome = event.target.parentElement;
+    console.log(`${tasks} + ${nome.textContent}`)    
+    tasks.filter(item => item != nome.textContent)
+    localStorage.setItem("minhasTarefas", JSON.stringify(tasks))
+    console.log(tasks)
 })
