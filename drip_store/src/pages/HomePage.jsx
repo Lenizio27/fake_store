@@ -1,5 +1,8 @@
 import { SectionHero, Sections, SectionOfertaEspecial } from "../components/Section";
 import { CardDestaque, CardDestaqueTipo, CardProdutosEmAlta } from "../components/ProductCard";
+
+
+
 import ImgBlusa from "../assets/images/blusa_destaque.png";
 import ImgFone from "../assets/images/fone_destaque.png";
 import ImgTenis from "../assets/images/tenis_3.png";
@@ -9,6 +12,8 @@ import IconBlusa from "../assets/images/icon_blusa.png"
 import IconCalca from "../assets/images/icon_calca.png"
 import IconFone from "../assets/images/icon_fone.png"
 import IconTenis from "../assets/images/icon_tenis.png"
+
+import { useState, useEffect } from "react";
 
 const HomePage = () => {
     const arrayCards = [

@@ -21,7 +21,7 @@ export const SectionHero = () => {
                                 Ver Ofertas
                         </button>
                     </div>
-                    <div className="flex-1 bg-c2 flex justify-center items-center p-2 ">
+                    <div className="flex-1 flex justify-center items-center p-2 ">
                         <img src={ImgTenisVermelho} alt="" className="max-md:w-[300px]"/>
                     </div>
                 </div>
