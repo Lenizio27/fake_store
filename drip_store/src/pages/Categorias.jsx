@@ -37,7 +37,7 @@ const Categorias = () => {
                                 image={item.image}
                                 title={item.title}
                                 discount={item.discount}
-                                type={item.type}
+                                type={item.type}gupy
                                 price={item.price}
                             ></CardProdutosEmAlta>
                         ))}

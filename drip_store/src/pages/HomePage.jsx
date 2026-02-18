@@ -1,8 +1,6 @@
 import { SectionHero, Sections, SectionOfertaEspecial } from "../components/Section";
 import { CardDestaque, CardDestaqueTipo, CardProdutosEmAlta } from "../components/ProductCard";
 
-
-
 import ImgBlusa from "../assets/images/blusa_destaque.png";
 import ImgFone from "../assets/images/fone_destaque.png";
 import ImgTenis from "../assets/images/tenis_3.png";
@@ -13,9 +11,26 @@ import IconCalca from "../assets/images/icon_calca.png"
 import IconFone from "../assets/images/icon_fone.png"
 import IconTenis from "../assets/images/icon_tenis.png"
 
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
+import { getProducts } from "../services/apis";
 
 const HomePage = () => {
+const [products, setProducts] = useState([]);
+const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        const fetchItems = async () => {
+            setLoading(true);
+            const data = await getProducts();
+            setProducts(data);
+            setLoading(false);
+        }
+        fetchItems();
+    }, []);
+
+
+    if(loading) return <p>Carregando Produtos...</p>;
+
     const arrayCards = [
         {
             discount: "30% OFF",
@@ -30,7 +45,7 @@ const HomePage = () => {
         {
             discount: "30% OFF",
             title: "Novo Beats Bass",
-            image: ImgFone
+            image: products[1].image
         },
     ]
 
