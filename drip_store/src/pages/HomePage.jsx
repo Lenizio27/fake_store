@@ -35,17 +35,17 @@ const [loading, setLoading] = useState(false);
         {
             discount: "30% OFF",
             title: "Novo drop Supreme",
-            image: ImgBlusa
+            image: products[0]?.image
         },
         {
             discount: "30% OFF",
             title: "Coleção Adidas",
-            image: ImgTenis
+            image: products[1]?.image
         },
         {
             discount: "30% OFF",
             title: "Novo Beats Bass",
-            image: products[1].image
+            image: products[2]?.image
         },
     ]
 
@@ -59,11 +59,10 @@ const [loading, setLoading] = useState(false);
     const arrayCardsEmAlta = []
     for(let i = 0; i < 8 ; i++){
         arrayCardsEmAlta.push({
-            image: ImgTenis2,
-            title: "K-Swiss V8 - Masculino",
-            discount: "30% OFF",
-            type: "tenis",
-            price: " $100",
+            image: products[i ]?.image,
+            title: products[i]?.title,
+            type: products[i]?.category,
+            price: products[i]?.price,
         })
     }
     

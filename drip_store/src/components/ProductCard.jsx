@@ -32,18 +32,17 @@ export const CardDestaqueTipo = ({image}) => {
     )
 }
 
-export const CardProdutosEmAlta = ({image, title, discount, type, price}) => {
+export const CardProdutosEmAlta = ({image, title, type, price}) => {
     return (
         <>
             <section className="w-[292px] h-[439px] max-md:w-[163px] max-md:h-[300px]">
                 <div className="relative flex items-center justify-center bg-s7 w-full h-[321px] max-md:h-[200px]">
-                    <div className="bg-[#E7FF86] p-3 font-bold h-[32px] w-[92px] text-[14px] flex items-center rounded-xl absolute left-[10px] top-[10px]">{discount}</div>
-                    <img src={image} alt="" className="rotate-[-30deg] w-[200px] max-md:w-[120px]"/>
+                    <img src={image} alt="" className="w-[200px] max-md:w-[120px]"/>
                 </div>
                 <div>
                     <p>{type}</p>
                     <h2>{title}</h2>
-                    <h3><span className="line-through">$200</span>{price}</h3>
+                    <h3>R$ {price}</h3>
                 </div>
             </section>
         </>

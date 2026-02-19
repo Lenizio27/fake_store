@@ -1,7 +1,25 @@
 import ImgTenisVermelho from "../assets/images/tenis_1.png"
 import ImgTenisAmarelo from "../assets/images/tenis_4.png"
 
+import { useState, useEffect} from "react";
+import { getProducts } from "../services/apis";
+
 export const SectionHero = () => {
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
+    
+        useEffect(() => {
+            const fetchItems = async () => {
+                setLoading(true);
+                const data = await getProducts();
+                setProducts(data);
+                setLoading(false);
+            }
+            fetchItems();
+        }, []);
+    
+    
+        if(loading) return <p>Carregando Produtos...</p>;
     return ( 
         <>
             <section className=" bg-s6">
@@ -22,7 +40,7 @@ export const SectionHero = () => {
                         </button>
                     </div>
                     <div className="flex-1 flex justify-center items-center p-2 ">
-                        <img src={ImgTenisVermelho} alt="" className="max-md:w-[300px]"/>
+                        <img src={products[12]?.image} alt="" className="max-md:w-[300px]"/>
                     </div>
                 </div>
                 
@@ -53,12 +71,27 @@ export const Sections = ({title, titleAlign, link, children, estilo}) => {
 }
 
 export const SectionOfertaEspecial = ({}) => {
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        const fetchItems = async () => {
+            setLoading(true);
+            const data = await getProducts();
+            setProducts(data);
+            setLoading(false);
+        }
+        fetchItems();
+    }, []);
+
+
+    if(loading) return <p>Carregando Produtos...</p>;   
     return (
         <>
             <section className="my-[40px]">
                 <div className="flex max-md:flex-col max-w-[1440px] m-auto px-4">
                     <div className="flex-1 relative w-[573px] flex items-center justify-center max-md:w-[auto]">
-                        <img src={ImgTenisAmarelo} alt="" className="w-auto max-md:w-[300px]"/>
+                        <img src={products[11]?.image} alt="" className="w-[250px]"/>
                         <div className="OfertaEspecial absolute h-[466px] w-[466px] top-0 -z-10 rounded-full max-md:w-[280px] max-md:h-[280px]"></div>
                     </div>
                     <div className="flex-1 flex flex-col gap-3 justify-center px-8 max-md:pt-28">
