@@ -29,7 +29,7 @@ export const SectionHero = () => {
                             Melhores ofertas personalizadas
                         </h2>
                         <h3 className=" font-extrabold text-[64px] leading-[66px]">
-                            Queima de stoque Nike🔥
+                            Queima de stoque 🔥
                         </h3>
                         <p>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse officia temporibus accusamus soluta
@@ -99,7 +99,7 @@ export const SectionOfertaEspecial = ({}) => {
                             Oferta Especial
                         </p>
                         <h3 className="font-bold text-[48px] leading-[50px] ">
-                            Air Jordan edição de colecionador
+                            edição de colecionador
                         </h3>
                         <p>
                             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus nihil quas obcaecati quae molestiae soluta nam reprehenderit sunt nemo. Id nesciunt ut voluptas dolores voluptatem atque doloribus! Alias, modi facilis?

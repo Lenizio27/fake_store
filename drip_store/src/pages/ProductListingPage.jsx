@@ -1,11 +1,24 @@
-import { useState } from "react";
 import { CardProdutosEmAlta } from "../components/ProductCard";
 import ImgTenis2 from "../assets/images/tenis_2.png";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { getProducts } from "../services/apis";
+const ProductListingPage = () => { 
 
-const ProductListingPage = () => {
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
+    
+        useEffect(() => {
+            const fetchItems = async () => {
+                setLoading(true);
+                const data = await getProducts();
+                setProducts(data);
+                setLoading(false);
+            }
+            fetchItems();
+        }, []);
+
     const [open, setOpen] = useState(false)
-
+    
     useEffect(() => {
     if (open) {
         document.body.style.overflow = "hidden";
@@ -36,13 +49,14 @@ const ProductListingPage = () => {
     const arrayCardsEmAlta = []
     for(let i = 0; i < 8 ; i++){
         arrayCardsEmAlta.push({
-            image: ImgTenis2,
-            title: "K-Swiss V8 - Masculino",
+            image: products[i ]?.image,
+            title: products[i]?.title,
             discount: "30% OFF",
-            type: "tenis",
-            price: " $100",
+            type: products[i]?.category,
+            price: products[i]?.price,
         })
     }
+    if(loading) return <p>Carregando Produtos...</p>;
 
     return ( 
         <>
