@@ -27,22 +27,12 @@ const ProductListingPage = () => {
     }
     }, [open]);
 
+    const arrayCategory = products.map(item => item.category);
+
     const arrayFiltroProdutos = [
         {
-            title: "Marcas",
-            radios: ["Adidas", "Calenciaga", "K-Swiss", "Nike", "Puma"],
-        },
-        {
-            title: "Categoria",
-            radios: ["Esporte e lazer", "Casual", "Utilitário", "Corrida"],
-        },
-        {
-            title: "Gênero",
-            radios: ["Masculino", "Feminino", "Unisex"],
-        },
-        {
             title: "Estado",
-            radios: ["Novo", "Usado"],
+            radios: [...new Set(arrayCategory)],
         },
     ]
 
@@ -79,7 +69,7 @@ const ProductListingPage = () => {
                     </div>
                 </div>
                 <div className="flex">
-                    <aside className="flex-4 bg-s7 p-4 w-[308px] max-md:hidden">
+                    <aside className="flex-4 bg-s7 p-4 w-[315px] max-md:hidden">
                         <h3>Filtrar por</h3>
                         <hr />
                         {arrayFiltroProdutos.map((item) => (
