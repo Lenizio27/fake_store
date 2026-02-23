@@ -64,10 +64,12 @@ const Header = () => {
                     </div>
                     <div className="flex gap-6 items-center px-8">
                         <a href="" className="underline text-s3">Cadastre-se</a>
-                        <button 
-                        className="flex items-center justify-center text-s7 h-[22px] bg-c2 px-7 py-5 rounded-md">
-                            <NavLink to={"/LoginPage"}>Entrar</NavLink>
-                        </button>
+                            <NavLink to={"/LoginPage"}>
+                                <button 
+                                className="flex items-center justify-center text-s7 h-[22px] bg-c2 px-7 py-5 rounded-md">
+                                    Entrar
+                                </button>
+                            </NavLink>
                     </div>
                     <div className="relative px-1">
                         <i className="pi pi-shopping-cart text-[25px]"></i>
