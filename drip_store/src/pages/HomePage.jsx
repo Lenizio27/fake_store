@@ -22,7 +22,9 @@ const [loading, setLoading] = useState(false);
         }
         fetchItems();
     }, []);
-    if(loading) return <p>Carregando Produtos...</p>;
+    if(loading) return <p className="h-[calc(100vh-70px)] w-[100%] flex items-center justify-center ">
+            <span className="pi pi-spin pi-spinner-dotted text-[50px]"></span>
+            </p>;
 
     const arrayCards = [
         {

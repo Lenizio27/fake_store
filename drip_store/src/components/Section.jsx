@@ -18,8 +18,10 @@ export const SectionHero = () => {
             fetchItems();
         }, []);
     
-    
-        if(loading) return <p>Carregando Produtos...</p>;
+            
+                if(loading) return <p className="h-[100vh] w-[100%] flex items-center justify-center ">
+            <span className="pi pi-spin pi-spinner-dotted text-[50px]"></span>
+            </p>;
     return ( 
         <>
             <section className=" bg-s6">
@@ -40,7 +42,7 @@ export const SectionHero = () => {
                         </button>
                     </div>
                     <div className="flex-1 flex justify-center items-center p-2 ">
-                        <img src={products[12]?.image} alt="" className="max-md:w-[300px]"/>
+                        <img src={products[2]?.image} alt="" className="max-md:w-[300px]"/>
                     </div>
                 </div>
                 
