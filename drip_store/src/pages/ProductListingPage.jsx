@@ -103,19 +103,23 @@ const ProductListingPage = () => {
                             <h3>Filtrar por</h3>
                             <hr />
                             {arrayFiltroProdutos.map((item) => (
-                                <div>
-                                    <h2 className="font-bold my-1">{item.title}</h2>
-                                    {item.radios.map(a =>
-                                    <p className="flex items-center">
-                                        <input
-                                        className="appearance-none w-4 h-4 border border-gray-400 rounded-sm checked:bg-c2 checked:border-purple-600 checked:before:content-['✓'] flex items-center text-white mr-1"
-                                        type="checkbox"
-                                        id="radioCheck"/>
-                                        {a}
-                                    </p>
-                                    )}
-                                </div>
-                            ))}
+                            <div>
+                                <h2 className="font-bold my-1">{item.title}</h2>
+                                {item.radios.map(a => 
+                                <p className="flex items-center">
+                                    <input 
+                                    className="appearance-none w-4 h-4 border border-gray-400 rounded-sm checked:bg-c2 checked:border-purple-600 checked:before:content-['✓'] flex items-center text-white mr-1"
+                                    type="radio"
+                                    name="categoryFilter"
+                                    id={a}
+                                    value={a}
+                                    checked={filter === a}
+                                    onChange={a => setFilter(a.target.value)}/>
+                                    {a}
+                                </p>
+                                )}
+                            </div>
+                        ))}
                         </div>
                     </aside>
                     <div className="flex-8 flex flex-wrap gap-2 px-2 justify-around">
