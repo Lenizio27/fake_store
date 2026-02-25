@@ -21,4 +21,4 @@ Uma plataforma de e-commerce moderna e responsiva construída para simular a exp
 
 ## 📦 Veja o Projeto
 [Link do Site](https://dripstore-lenizio.vercel.app/)
-![Visualização do Projeto](.assets/HomePageImage.png)
+![Visualização do Projeto](./assets/HomePageImage.png)
