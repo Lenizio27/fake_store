@@ -63,7 +63,9 @@ const Header = () => {
                         <i className="pi pi-search absolute right-4 top-5 text-[20px] text-s5"></i>
                     </div>
                     <div className="flex gap-6 items-center px-8">
-                        <a href="" className="underline text-s3">Cadastre-se</a>
+                        <NavLink to={"/CreateAccountPage"}>
+                            <p className="text-s3">Cadastre-se</p>
+                        </NavLink>
                             <NavLink to={"/LoginPage"}>
                                 <button 
                                 className="flex items-center justify-center text-s7 h-[22px] bg-c2 px-7 py-5 rounded-md">

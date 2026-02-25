@@ -5,6 +5,7 @@ import ProductViewPage from "../pages/ProductViewPage";
 import Categorias from "../pages/Categorias";
 import Layout from "../layout/Layout";
 import LoginPage from "../pages/LoginPage";
+import CreateAccountPage from "../pages/CreateAccount";
 
 const Paths = () => {
   return (
@@ -17,6 +18,8 @@ const Paths = () => {
         <Route path="/ProductViewPage" element={<ProductViewPage/>} />
       </Route>
         <Route path="/LoginPage" element={<LoginPage />} />
+        <Route path="/CreateAccountPage" element={<CreateAccountPage />} />
+
     </Routes>
   );
 };

@@ -86,8 +86,8 @@ const ProductListingPage = () => {
                                     <input 
                                     className="appearance-none w-4 h-4 border border-gray-400 rounded-sm checked:bg-c2 checked:border-purple-600 checked:before:content-['✓'] flex items-center text-white mr-1"
                                     type="radio"
-                                    name="categoryFilter"
-                                    id={a}
+                                    name="categoryFilterDesktop"
+                                    id={`desktop-${a}`}
                                     value={a}
                                     checked={filter === a}
                                     onChange={a => setFilter(a.target.value)}/>
