@@ -6,11 +6,15 @@ const ProductListingPage = () => {
 
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
-    
-        useEffect(() => {
-            const fetchItems = async () => {
-                setLoading(true);
-                const data = await getProducts();
+
+    const [filter, setFilter] = useState('');
+
+    const filteredProducts = products.filter(item => item.category === filter || filter === '');
+
+    useEffect(() => {
+        const fetchItems = async () => {
+            setLoading(true);
+            const data = await getProducts();
                 setProducts(data);
                 setLoading(false);
             }
@@ -32,12 +36,12 @@ const ProductListingPage = () => {
     const arrayFiltroProdutos = [
         {
             title: "Estado",
-            radios: [...new Set(arrayCategory)],
+            radios: ["Todos", ...new Set(arrayCategory)],
         },
     ]
 
     const arrayCardsEmAlta = []
-    for(let i = 0; i < 8 ; i++){
+    for(let i = 0; i < products.length ; i++){
         arrayCardsEmAlta.push({
             image: products[i ]?.image,
             title: products[i]?.title,
@@ -81,8 +85,12 @@ const ProductListingPage = () => {
                                 <p className="flex items-center">
                                     <input 
                                     className="appearance-none w-4 h-4 border border-gray-400 rounded-sm checked:bg-c2 checked:border-purple-600 checked:before:content-['✓'] flex items-center text-white mr-1"
-                                    type="checkbox" 
-                                    id="radioCheck"/>
+                                    type="radio"
+                                    name="categoryFilter"
+                                    id={a}
+                                    value={a}
+                                    checked={filter === a}
+                                    onChange={a => setFilter(a.target.value)}/>
                                     {a}
                                 </p>
                                 )}
@@ -111,15 +119,20 @@ const ProductListingPage = () => {
                         </div>
                     </aside>
                     <div className="flex-8 flex flex-wrap gap-2 px-2 justify-around">
-                       {arrayCardsEmAlta.map(item => (
-                            <CardProdutosEmAlta
-                                image={item.image}
-                                title={item.title}
-                                discount={item.discount}
-                                type={item.type}
-                                price={item.price}
-                            ></CardProdutosEmAlta>
-                        ))}
+                      {arrayCardsEmAlta
+                        .filter((item) => {
+                            // Se o filtro for "Todos" ou estiver vazio, retorna true para todos os itens
+                            if (filter === "Todos" || filter === "") return true;
+                            // Caso contrário, compara com a categoria do item
+                            return item.type === filter;
+                        })
+                        .map((item) => (
+                            <CardProdutosEmAlta 
+                            key={item.title}
+                            {...item} 
+                            />
+                        ))
+                        }
                     </div>
                 </div>
             </div>
