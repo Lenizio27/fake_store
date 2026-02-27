@@ -15,7 +15,7 @@ const CreateAccountPage = () => {
             </section>
             <div>
                 <section className="p-4 max-w-[750px] m-auto">
-                    <h1 className="text-[32px]">Criar Conta</h1>
+                    <h1 className="text-[32px] max-md:text-center">Criar Conta</h1>
                     <section className="flex flex-col gap-4">
                         <h2 className="text-[16px] font-bold">Informações Pessoais</h2>
                         <hr />

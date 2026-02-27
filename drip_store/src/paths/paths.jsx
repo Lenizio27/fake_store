@@ -19,7 +19,6 @@ const Paths = () => {
       </Route>
         <Route path="/LoginPage" element={<LoginPage />} />
         <Route path="/CreateAccountPage" element={<CreateAccountPage />} />
-
     </Routes>
   );
 };
