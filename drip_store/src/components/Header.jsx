@@ -8,6 +8,8 @@ const Header = () => {
     const [open, menuOpen] = useState(false)
     const [classe, setClasse] = useState("");
 
+    const [openCart, SetOpenCart] = useState(false)
+
     function aplicarClasseDepois() {
         if(open === false){
             setTimeout(() => {
@@ -100,9 +102,13 @@ const Header = () => {
                 <LogoMobile open={true}/>
                 <div className="flex gap-5">
                     <div className="pi pi-search text-[20px] cursor-pointer"></div>
-                    <div className="relative px-1">
+                    <div 
+                        className="relative px-1 cursor-pointer"
+                        onClick={()=> SetOpenCart(!openCart)}
+                        >
                         <i className="pi pi-shopping-cart text-[20px]"></i>
                         <div className="absolute top-0 right-0 w-[15px] h-[15px] bg-c1 rounded-lg text-center text-[10px] text-s7">1</div>
+                        <div className="absolute bg-c1 w-[14px] h-[14px] top-0 right-0"></div>
                     </div>
                 </div>
             </div>
