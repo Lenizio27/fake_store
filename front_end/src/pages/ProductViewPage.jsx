@@ -1,5 +1,3 @@
-import { NavLink } from "react-router-dom";
-import { MeusPedidos, MinhasInformacoes, MetodosDePagamento } from "./Configuration";
 import { useState } from "react";
 
 const ProductViewPage = () => {

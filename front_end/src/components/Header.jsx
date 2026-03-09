@@ -29,11 +29,11 @@ const Header = () => {
         },
         {
             route: "/ProductListingPage",
-            title: "Produtos"
+            title: "Categorias"
         },
         {
             route: "/CategoriasProdutos",
-            title: "Categorias"
+            title: "Produtos"
         },
         {
             route: "/ProductViewPage",
