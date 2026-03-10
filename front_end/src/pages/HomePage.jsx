@@ -58,6 +58,7 @@ const [loading, setLoading] = useState(false);
             title: products[i]?.title,
             type: products[i]?.category,
             price: products[i]?.price,
+            id: products[i]?.id,
         })
     }
     
@@ -111,6 +112,7 @@ const [loading, setLoading] = useState(false);
                                     discount={item.discount}
                                     type={item.type}
                                     price={item.price}
+                                    id={item.id}
                                 ></CardProdutosEmAlta>
                             ))}
                         </div>

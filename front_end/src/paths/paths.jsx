@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import ProductListingPage from "../pages/ProductListingPage";
 import ProductViewPage from "../pages/ProductViewPage";
@@ -13,9 +13,10 @@ const Paths = () => {
       <Route element={<Layout />}>
         <Route path="/" element={<HomePage />} />
 
-        <Route path="/CategoriasProdutos" element={<Categorias/>} />
+        <Route path="/CategoriasProdutos/:id" element={<Navigate to="/product/1" replace />} />
         <Route path="/ProductListingPage" element={<ProductListingPage/>} />
         <Route path="/ProductViewPage" element={<ProductViewPage/>} />
+        <Route path="/product/:id" element={<Categorias/>} />
       </Route>
 
       <Route path="/LoginPage" element={<LoginPage />} />

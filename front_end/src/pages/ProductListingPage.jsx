@@ -48,6 +48,7 @@ const ProductListingPage = () => {
             discount: "30% OFF",
             type: products[i]?.category,
             price: products[i]?.price,
+            id: products[i]?.id,
         })
     }
     if(loading) return <p className="h-[calc(100vh-120px)] w-[100%] flex items-center justify-center ">

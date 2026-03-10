@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 export const CardDestaque = ({discount, title, image}) => {
     return ( 
         <>
@@ -32,19 +34,21 @@ export const CardDestaqueTipo = ({image}) => {
     )
 }
 
-export const CardProdutosEmAlta = ({image, title, type, price}) => {
+export const CardProdutosEmAlta = (props) => {
     return (
         <>
-            <section className="w-[292px] h-[439px] max-md:w-[163px] max-md:h-[300px]">
-                <div className="relative flex items-center justify-center bg-s7 w-full h-[321px] max-md:h-[200px]">
-                    <img src={image} alt="" className="w-[200px] max-md:w-[120px]"/>
-                </div>
-                <div>
-                    <p>{type}</p>
-                    <h2>{title}</h2>
-                    <h3>R$ {price}</h3>
-                </div>
-            </section>
+            <NavLink to={`/product/${props.id}`}>
+                <section className="w-[292px] h-[439px] max-md:w-[163px] max-md:h-[300px]">
+                    <div className="relative flex items-center justify-center bg-s7 w-full h-[321px] max-md:h-[200px]">
+                        <img src={props.image} alt="" className="w-[200px] max-md:w-[120px]"/>
+                    </div>
+                    <div>
+                        <p>{props.type}</p>
+                        <h2>{props.title}</h2>
+                        <h3>R$ {props.price}</h3>
+                    </div>
+                </section>
+            </NavLink>
         </>
     )
 }
