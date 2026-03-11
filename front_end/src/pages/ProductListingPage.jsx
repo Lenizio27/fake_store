@@ -1,7 +1,7 @@
 import { CardProdutosEmAlta } from "../components/ProductCard";
-import ImgTenis2 from "../assets/images/tenis_2.png";
 import { useEffect, useState } from "react";
 import { getProducts } from "../services/apis";
+
 const ProductListingPage = () => { 
 
     const [products, setProducts] = useState([]);
