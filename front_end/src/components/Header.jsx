@@ -57,7 +57,7 @@ const Header = () => {
         <>
         <header className="bg-s7">
             <div className="flex flex-col items-center max-w-[1440px] m-auto px-4 max-md:hidden">
-                {/* Pesquisas */}
+                {/* --------------- Pesquisas --------------- */}
                 <div className="flex items-center justify-between w-full py-5">
                     <Logo className="flex-6" open={true}/>
                     <div className="w-[500px] flex-1 relative">
@@ -75,12 +75,20 @@ const Header = () => {
                                 </button>
                             </NavLink>
                     </div>
+                    {/* --------------- Carrinho --------------- */}
                     <div className="relative px-1">
-                        <i className="pi pi-shopping-cart text-[25px]"></i>
-                        <div className="absolute top-0 right-0 w-[15px] h-[15px] bg-c1 rounded-lg text-center text-[10px] text-s7">1</div>
+                        <i 
+                        className="pi pi-shopping-cart text-[25px] cursor-pointer" 
+                        onClick={() => SetOpenCart(!openCart)}></i>
+                        <div className={`absolute top-0 right-0 w-[15px] h-[15px] bg-c1 rounded-lg text-center text-[10px] text-s7`}>
+                            1
+                        </div>
+                    <div className={`absolute w-[300px] right-0 top-[40px] bg-c2 transition-all ${openCart ? "opacity-100" : "opacity-0 w-0 h-0 right-20"} flex-col p-4 rounded-md`}>
+                        <p>Meu Carrinho</p>
+                    </div>
                     </div>
                 </div>
-                {/* Navegação Pagina */}
+                {/* --------------- Navegação Pagina --------------- */}
                 <nav className="justify-start items-start w-full">
                     <ul className="flex gap-6">
                         {arrayLinks.map(item => (
@@ -94,7 +102,9 @@ const Header = () => {
                     </ul> 
                 </nav>
             </div>
-            {/* Header Mobile */}
+
+            {/* --------------- Header Mobile ---------------*/}
+
             <div className="hidden max-md:flex items-center justify-between px-4 py-2 h-[80px] fixed bg-s7 w-full z-50">
                 <div 
                 className={`cursor-pointer transition-all duration-100 pi ${open ? `pi-align-left scale-x-90`: `pi-align-justify ${aplicarClasseDepois()}`} text-[20px] ${aplicarClasseDepois()}`} 
@@ -113,7 +123,7 @@ const Header = () => {
                 </div>
             </div>
             
-            {/* Navegacao Mobile */}
+            {/* --------------- Navegacao Mobile --------------- */}
             <div className={`md:hidden h-[calc(100dvh-80px)] w-full bg-b1 transition-all duration-200 bottom-0 fixed  ${open ? " opacity-100" : `scale-100 opacity-0 ${classe}`} z-10`}>
 
                 <div className={`flex flex-col w-[80%] bg-s7 h-[calc(100dvh-80px)] md:hidden transition-all duration-200 origin-left px-4 py-4 justify-between ${open ? "scale-100 opacity-100" : "scale-100 scale-x-0 opacity-0"}`}>
