@@ -7,15 +7,50 @@ app.use(express.json());
 
 // Nosso banco de dados temporário
 let bankData = {
-    users: [],
+    // Agora temos objetos com email e senha para validar
+    users: [
+        { id: "1", email: "lenizio@email.com", password: "123", name: "Lenizio" },
+        { id: "2", email: "aluno@cs.com", password: "456", name: "Estudante" }
+    ],
     carts: {} 
 };
 
-// ROTA PARA SALVAR (POST)
-app.post('/cart/:userId', (req, res) => {
-    const { userId } = req.params;
-    bankData.carts[userId] = req.body; // Salva o que vier no corpo da requisição
-    res.status(200).send({ message: "Carrinho salvo!", userId });
+// ROTA DE LOGIN: Para o Front-end consultar
+app.post('/login', (req, res) => {
+    const { email, password } = req.body;
+    // Busca um usuário que coincida com o email E a senha
+    const user = bankData.users.find(u => u.email === email && u.password === password);
+
+    if (user) {
+        res.status(200).json({ id: user.id, name: user.name });
+    } else {
+        res.status(401).json({ message: "Login ou senha incorretos" });
+    }
+});
+
+// ROTA DE CADASTRO: Para salvar um novo usuário no banco
+app.post('/register', (req, res) => {
+    const { email, password, name } = req.body;
+
+    // 1. Verificamos se o usuário já existe para não duplicar
+    const userExists = bankData.users.find(u => u.email === email);
+
+    if (userExists) {
+        return res.status(400).json({ message: "Este e-mail já está cadastrado!" });
+    }
+
+    // 2. Criamos o novo objeto de usuário com um ID único (usando o tamanho do array + 1)
+    const newUser = {
+        id: (bankData.users.length + 1).toString(),
+        email,
+        password,
+        name
+    };
+
+    // 3. Adicionamos ao nosso "banco"
+    bankData.users.push(newUser);
+
+    res.status(201).json({ message: "Usuário cadastrado com sucesso!", user: newUser });
 });
 
 // ROTA PARA LER (GET)

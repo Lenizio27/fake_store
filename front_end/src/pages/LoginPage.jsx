@@ -7,6 +7,24 @@ import { useEffect, useState } from "react";
 const LoginPage = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
+
+    const handleLogin = async () => {
+        const response = await fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password }) // Dados dos seus inputs
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            // AQUI ESTÁ O SEGREDO: Guardamos o ID que o back mandou
+            localStorage.setItem('userId', data.id);
+            alert(`Bem-vindo, ${data.name}!`);
+        } else {
+            alert(data.message);
+        }
+    };
         
             useEffect(() => {
                 const fetchItems = async () => {
@@ -41,10 +59,16 @@ const LoginPage = () => {
                                 <p>Novo cliente? Então registre-se <a href="">aqui</a></p>
                                 <form className="flex flex-col">
                                     <label className="flex flex-col">Login *
-                                        <input placeholder="Login" type="text" className=" pl-5 bg-s6  h-[60px] rounded-md w-full" />
+                                        <input 
+                                        placeholder="Login" 
+                                        type="text" 
+                                        className=" pl-5 bg-s6  h-[60px] rounded-md w-full" />
                                     </label>
                                     <label className="flex flex-col">Senha *
-                                        <input placeholder="Senha" type="text" className=" pl-5 bg-s6  h-[60px] rounded-md w-full" />
+                                        <input 
+                                        placeholder="Senha" 
+                                        type="text" 
+                                        className=" pl-5 bg-s6  h-[60px] rounded-md w-full" />
                                     </label>
                                 </form>
                                 <a href="" className="underline">esqueci minha senha</a>

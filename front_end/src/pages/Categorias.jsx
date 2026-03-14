@@ -10,6 +10,35 @@ const Categorias = () => {
         const [relatedProducts, setRelatedProducts] = useState([]); // Para os cards de baixo (Array)
         const [loading, setLoading] = useState(false);
 
+        // Exemplo de como enviar para o SEU servidor
+        const salvarNoBackEnd = async (carrinhoAtualizado) => {
+        try {
+                const response = await fetch('http://localhost:3000/cart/lenizio', { // 'lenizio' é o userId de teste
+                method: 'POST',
+                headers: {
+                        'Content-Type': 'application/json' // Avisa o servidor que estamos enviando JSON
+                },
+                body: JSON.stringify(carrinhoAtualizado)
+                });
+
+                if (response.ok) {
+                console.log("Sincronizado com o Back-end com sucesso!");
+                }
+        } catch (error) {
+                console.error("Erro ao conectar com o servidor:", error);
+        }
+        };
+
+        const handleComprar = () => {
+    const produtoSelecionado = {
+        id: product.id,
+        nome: product.title,
+        preco: product.price
+    };
+
+    // Chamamos a função que você acabou de colocar no código
+    salvarNoBackEnd(produtoSelecionado);
+};
         
         useEffect(() => {
         const fetchItems = async () => {
@@ -70,7 +99,8 @@ const Categorias = () => {
                                         </p>
                                         <p>tamanho</p>
                                         <button
-                                        className="flex items-center justify-center text-s7 h-[22px] bg-c2 px-7 py-5 rounded-md w-full m-2">
+                                        className="flex items-center justify-center text-s7 h-[22px] bg-c2 px-7 py-5 rounded-md w-full m-2"
+                                        onClick={handleComprar}>
                                                 Adicionar ao carrinho
                                         </button>
                                 </div>
