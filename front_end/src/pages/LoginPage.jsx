@@ -8,23 +8,35 @@ const LoginPage = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    const handleLogin = async () => {
+    const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
         const response = await fetch('http://localhost:3000/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password }) // Dados dos seus inputs
+            body: JSON.stringify({ email, password })
         });
 
         const data = await response.json();
 
         if (response.ok) {
-            // AQUI ESTÁ O SEGREDO: Guardamos o ID que o back mandou
+            // SUCESSO: O servidor encontrou o usuário e nos mandou o ID e Nome
+            alert(`Bem-vindo de volta, ${data.name}!`);
+            
+            // Passo crucial: Guardar o ID para usar no carrinho depois
             localStorage.setItem('userId', data.id);
-            alert(`Bem-vindo, ${data.name}!`);
+            localStorage.setItem('userName', data.name);
+            
+            // Aqui você pode redirecionar para a Home
         } else {
+            // ERRO: Login ou senha incorretos
             alert(data.message);
         }
-    };
+    } catch (error) {
+        console.error("Erro ao conectar com o servidor:", error);
+    }
+};
         
             useEffect(() => {
                 const fetchItems = async () => {
