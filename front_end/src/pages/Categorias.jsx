@@ -10,35 +10,46 @@ const Categorias = () => {
         const [relatedProducts, setRelatedProducts] = useState([]); // Para os cards de baixo (Array)
         const [loading, setLoading] = useState(false);
 
+
         // Exemplo de como enviar para o SEU servidor
-        const salvarNoBackEnd = async (carrinhoAtualizado) => {
+        const salvarNoBackEnd = async (produto) => {
+        // 1. Pegamos o ID do usuário que guardamos no momento do login
+        const userId = localStorage.getItem('userId');
+
+        // Verificação de segurança: se não tiver ID, o usuário não está logado
+        if (!userId) {
+                alert("Por favor, faça login para adicionar itens ao carrinho!");
+                return;
+        }
+
         try {
-                const response = await fetch('http://localhost:3000/cart/lenizio', { // 'lenizio' é o userId de teste
+                // 2. Usamos Template String (as crases ` `) para colocar o ID na URL
+                const response = await fetch(`http://localhost:3000/cart/${userId}`, {
                 method: 'POST',
-                headers: {
-                        'Content-Type': 'application/json' // Avisa o servidor que estamos enviando JSON
-                },
-                body: JSON.stringify(carrinhoAtualizado)
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(produto)
                 });
 
                 if (response.ok) {
-                console.log("Sincronizado com o Back-end com sucesso!");
+                console.log("Produto salvo no carrinho do usuário:", userId);
                 }
         } catch (error) {
-                console.error("Erro ao conectar com o servidor:", error);
+                console.error("Erro ao salvar no servidor:", error);
         }
         };
 
         const handleComprar = () => {
-    const produtoSelecionado = {
-        id: product.id,
-        nome: product.title,
-        preco: product.price
-    };
+        const produtoSelecionado = {
+                id: product.id,
+                nome: product.title,
+                preco: product.price
+        };
+        // Chamamos a função que você acabou de colocar no código
+        salvarNoBackEnd(produtoSelecionado);
+        };
 
-    // Chamamos a função que você acabou de colocar no código
-    salvarNoBackEnd(produtoSelecionado);
-};
+        
+        
         
         useEffect(() => {
         const fetchItems = async () => {
@@ -51,7 +62,7 @@ const Categorias = () => {
         }, []);
 
 
-       useEffect(() => {
+        useEffect(() => {
         setLoading(true);
         fetch(`https://fakestoreapi.com/products/${id}`)
                 .then(res => res.json())
@@ -64,6 +75,7 @@ const Categorias = () => {
                 setLoading(false);
                 });
         }, [id]);
+        
         if ( loading || !product ) {return <p className="h-[calc(100vh-120px)] w-[100%] flex items-center justify-center ">
         <span className="pi pi-spin pi-spinner-dotted text-[50px]"></span>
         </p>;} 

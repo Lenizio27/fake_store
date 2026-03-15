@@ -10,7 +10,6 @@ let bankData = {
     // Agora temos objetos com email e senha para validar
     users: [
         { id: "1", email: "lenizio@email.com", password: "123", name: "Lenizio" },
-        { id: "2", email: "aluno@cs.com", password: "456", name: "Estudante" }
     ],
     carts: {} 
 };
@@ -53,10 +52,41 @@ app.post('/register', (req, res) => {
     res.status(201).json({ message: "Usuário cadastrado com sucesso!", user: newUser });
 });
 
+// ROTA PARA SALVAR (POST) - É aqui que o erro 404 está acontecendo
+app.post('/cart/:userId', (req, res) => {
+    const { userId } = req.params;
+    const produto = req.body;
+
+    // Se o carrinho do usuário não existir, criamos um array vazio
+    if (!bankData.carts[userId]) {
+        bankData.carts[userId] = [];
+    }
+
+    // Adicionamos o produto na "gaveta" desse usuário
+    bankData.carts[userId].push(produto);
+
+    console.log(`Produto adicionado ao carrinho de ${userId}`);
+    res.status(201).json({ message: "Produto adicionado!" });
+});
+
+
+
 // ROTA PARA LER (GET)
 app.get('/cart/:userId', (req, res) => {
     const { userId } = req.params;
     res.json(bankData.carts[userId] || []); // Retorna o carrinho ou vazio
+});
+
+app.get('/users/:id', (req, res) => {
+    const { id } = req.params;
+    const user = bankData.users.find(u => u.id === id);
+    
+    if (user) {
+        // Retornamos os dados, mas por segurança poderíamos omitir a senha em um sistema real
+        res.json(user);
+    } else {
+        res.status(404).json({ message: "Usuário não encontrado" });
+    }
 });
 
 app.listen(3000, () => console.log("Servidor rodando na porta 3000"));

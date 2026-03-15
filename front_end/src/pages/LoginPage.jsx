@@ -7,36 +7,38 @@ import { useEffect, useState } from "react";
 const LoginPage = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const handleLogin = async (e) => {
-    e.preventDefault();
+        e.preventDefault();
 
-    try {
-        const response = await fetch('http://localhost:3000/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password })
-        });
+        try {
+            const response = await fetch('http://localhost:3000/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
 
-        const data = await response.json();
+            const data = await response.json();
 
-        if (response.ok) {
-            // SUCESSO: O servidor encontrou o usuário e nos mandou o ID e Nome
-            alert(`Bem-vindo de volta, ${data.name}!`);
-            
-            // Passo crucial: Guardar o ID para usar no carrinho depois
-            localStorage.setItem('userId', data.id);
-            localStorage.setItem('userName', data.name);
-            
-            // Aqui você pode redirecionar para a Home
-        } else {
-            // ERRO: Login ou senha incorretos
-            alert(data.message);
+            if (response.ok) {
+                // SUCESSO: O servidor encontrou o usuário e nos mandou o ID e Nome
+                alert(`Bem-vindo de volta, ${data.name}!`);
+                
+                // Passo crucial: Guardar o ID para usar no carrinho depois
+                localStorage.setItem('userId', data.id);
+                localStorage.setItem('userName', data.name);
+                
+                // Aqui você pode redirecionar para a Home
+            } else {
+                // ERRO: Login ou senha incorretos
+                alert(data.message);
+            }
+        } catch (error) {
+            console.error("Erro ao conectar com o servidor:", error);
         }
-    } catch (error) {
-        console.error("Erro ao conectar com o servidor:", error);
-    }
-};
+    };
         
             useEffect(() => {
                 const fetchItems = async () => {
@@ -72,20 +74,30 @@ const LoginPage = () => {
                                 <form className="flex flex-col">
                                     <label className="flex flex-col">Login *
                                         <input 
-                                        placeholder="Login" 
-                                        type="text" 
-                                        className=" pl-5 bg-s6  h-[60px] rounded-md w-full" />
+                                        value={email} 
+                                        onChange={(e) => setEmail(e.target.value)} 
+                                        type="email"
+                                        className=" pl-5 bg-s6  h-[60px] rounded-md w-full" 
+                                        />
                                     </label>
                                     <label className="flex flex-col">Senha *
                                         <input 
-                                        placeholder="Senha" 
-                                        type="text" 
-                                        className=" pl-5 bg-s6  h-[60px] rounded-md w-full" />
+                                        value={password} 
+                                        onChange={(e) => setPassword(e.target.value)} 
+                                        type="password"
+                                        className=" pl-5 bg-s6  h-[60px] rounded-md w-full" 
+                                        />
                                     </label>
                                 </form>
                                 <a href="" className="underline">esqueci minha senha</a>
-                                <button className="flex items-center justify-center text-s7 h-[22px] bg-c2 px-7 py-5 rounded-md w-full"> Acessar Conta</button>
-                                <div className=" text-center">
+                                <button 
+                                className="flex items-center justify-center text-s7 h-[22px] bg-c2 px-7 py-5 rounded-md w-full"
+                                onClick={handleLogin}
+                                > Acessar Conta
+                                </button>
+                                <div 
+                                className=" text-center"
+                                >
                                     Ou faça login com <span className="pi pi-google"></span> <span className="pi pi-facebook"></span>
                                 </div>
                         </section>

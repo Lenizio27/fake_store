@@ -7,7 +7,7 @@ import { useEffect } from "react";
 const Header = () => {
     const [open, menuOpen] = useState(false)
     const [classe, setClasse] = useState("");
-
+    const [itensCarrinho, setItensCarrinho] = useState([]);
     const [openCart, SetOpenCart] = useState(false)
 
     function aplicarClasseDepois() {
@@ -40,6 +40,25 @@ const Header = () => {
             title: "Meus Pedidos"
         },
     ]
+
+   useEffect(() => {
+        const buscarDados = async () => {
+            const userId = localStorage.getItem('userId');
+            if (!userId) return;
+
+            const response = await fetch(`http://localhost:3000/cart/${userId}`);
+            const data = await response.json();
+            setItensCarrinho(data);
+        };
+
+        buscarDados();
+        
+        // DICA DE OURO: Adicione um intervalo de "polling" (opcional)
+        // Isso busca os dados a cada 3 segundos sozinho
+        const interval = setInterval(buscarDados, 1500);
+        return () => clearInterval(interval); 
+
+    }, []);
     
     useEffect(() => {
     if (open) {
@@ -80,12 +99,16 @@ const Header = () => {
                         <i 
                         className="pi pi-shopping-cart text-[25px] cursor-pointer" 
                         onClick={() => SetOpenCart(!openCart)}></i>
-                        <div className={`absolute top-0 right-0 w-[15px] h-[15px] bg-c1 rounded-lg text-center text-[10px] text-s7`}>
-                            1
+                        <div className={`absolute top-0 right-0 w-[15px] h-[15px] bg-c1 rounded-lg text-center text-[10px] text-s7 cursor-pointer`}
+                        onClick={() => SetOpenCart(!openCart)}>
+                            {itensCarrinho.length}
                         </div>
-                    <div className={`absolute w-[300px] right-0 top-[40px] bg-c2 transition-all ${openCart ? "opacity-100" : "opacity-0 w-0 h-0 right-20"} flex-col p-4 rounded-md`}>
-                        <p>Meu Carrinho</p>
-                    </div>
+                        <div className={`absolute w-[300px] right-0 top-[40px] bg-b2 text-white text-[20px] transition-all ${openCart ? "opacity-100" : "opacity-0 w-0 h-0 right-20 hidden"} flex-col p-4 rounded-md z-10`}>
+                            <p>Meu Carrinho</p>
+                                {itensCarrinho.map(item => (
+                                    <p>{item.nome} - RS {item.preco}</p>
+                                ))}
+                        </div>
                     </div>
                 </div>
                 {/* --------------- Navegação Pagina --------------- */}
@@ -114,11 +137,19 @@ const Header = () => {
                     <div className="pi pi-search text-[20px] cursor-pointer"></div>
                     <div 
                         className="relative px-1 cursor-pointer"
-                        onClick={()=> SetOpenCart(!openCart)}
                         >
-                        <i className="pi pi-shopping-cart text-[20px]"></i>
-                        <div className="absolute top-0 right-0 w-[15px] h-[15px] bg-c1 rounded-lg text-center text-[10px] text-s7">1</div>
-                        <div className="absolute bg-c1 w-[14px] h-[14px] top-0 right-0"></div>
+                        <i className="pi pi-shopping-cart text-[20px]"
+                        onClick={()=> SetOpenCart(!openCart)}></i>
+                        <div className="absolute top-0 right-0 w-[15px] h-[15px] bg-c1 rounded-lg text-center text-[10px] text-s7"
+                        onClick={()=> SetOpenCart(!openCart)}>
+                            {itensCarrinho.length}
+                        </div>
+                        <div className={`absolute w-[300px] right-0 top-[40px] bg-b2 text-white text-[20px] transition-all ${openCart ? "opacity-100" : "opacity-0 w-0 h-0 right-20 hidden"} flex-col p-4 rounded-md z-10`}>
+                            <p>Meu Carrinho</p>
+                                {itensCarrinho.map(item => (
+                                    <p>{item.nome} - RS {item.preco}</p>
+                                ))}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -140,13 +171,18 @@ const Header = () => {
                         ))}
                         </ul>
                     </div>
-                    <div className="flex flex-col items-center justify-center">
+                    <div className="flex flex-col text-center justify-center w-full">
                         <hr />
-                        <button
-                        className="flex items-center justify-center text-s7 h-[22px] bg-c2 px-7 py-5 rounded-md w-full m-2">
-                                Entrar
-                        </button>
-                        <a href="" className="underline text-s3">Cadastre-se</a>
+                        <NavLink to={"/LoginPage"}>
+                            <button
+                            className="flex items-center justify-center text-s7 h-[22px] bg-c2 px-7 py-5 rounded-md w-full m-2">
+                                    Entrar
+                            </button>
+                        </NavLink>
+                        <NavLink
+                        to={"/CreateAccountPage"}>
+                                Cadastre-se
+                        </NavLink>
                     </div>
                 </div>
             </div>

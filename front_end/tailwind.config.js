@@ -25,6 +25,7 @@ export default {
         s8: "var(--s8)",
         
         b1: "var(--b1)",
+        b2: "var(--b2)"
       },
     },
   },
