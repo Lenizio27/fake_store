@@ -1,9 +1,25 @@
 import { useState, useEffect } from "react";
 
+import { getProducts } from "../services/apis";
+
 const ProductViewPage = () => {
+
     const [abaAtiva, setAbaAtiva] = useState(1);
     const [itensCarrinho, setItensCarrinho] = useState([]);
     const [userData, setUserData] = useState(null);
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+     useEffect(() => {
+        const fetchItems = async () => {
+            setLoading(true);
+            const data = await getProducts();
+            setProducts(data);
+            setLoading(false);
+        }
+        fetchItems();
+    }, []);
+
 
     const arrayLinks = [
         {
@@ -15,7 +31,8 @@ const ProductViewPage = () => {
             title: "Minhas Informações"
         },
     ]
-
+    
+    
 
         useEffect(() => {
             const getPerfil = async () => {
@@ -29,26 +46,33 @@ const ProductViewPage = () => {
             getPerfil();
         }, []);
 
+        
+        
+
 
     useEffect(() => {
-            const buscarDados = async () => {
-                const userId = localStorage.getItem('userId');
-                if (!userId) return;
+        const buscarDados = async () => {
+            const userId = localStorage.getItem('userId');
+            if (!userId) return;
+
+            const response = await fetch(`http://localhost:3000/cart/${userId}`);
+            const data = await response.json();
+            setItensCarrinho(data);
+        };
     
-                const response = await fetch(`http://localhost:3000/cart/${userId}`);
-                const data = await response.json();
-                setItensCarrinho(data);
-            };
-    
-            buscarDados();
-            
-            // DICA DE OURO: Adicione um intervalo de "polling" (opcional)
-            // Isso busca os dados a cada 3 segundos sozinho
-            const interval = setInterval(buscarDados, 3000);
-            return () => clearInterval(interval); 
+        buscarDados();
+        
+        // DICA DE OURO: Adicione um intervalo de "polling" (opcional)
+        // Isso busca os dados a cada 3 segundos sozinho
+        const interval = setInterval(buscarDados, 3000);
+        return () => clearInterval(interval); 
     
         }, []);
 
+        if(loading) return <p className="h-[calc(100vh-70px)] w-[100%] flex items-center justify-center ">
+        <span className="pi pi-spin pi-spinner-dotted text-[50px]"></span>
+        </p>;
+    
     return ( 
         <>
          <section className="bg-s8 ">
@@ -74,8 +98,16 @@ const ProductViewPage = () => {
                             {/* 2. Só aparece se o número bater com o estado */}
                             {abaAtiva == 1 &&
                             <div>
-                                {itensCarrinho.map(item => (
-                                    <p>{item.nome} - RS {item.preco}</p>
+                                {
+                                itensCarrinho == "" ? "nenhum produto adicionado ainda" : 
+                                itensCarrinho.map(item => (
+                                    <div className="flex bg-c2 m-2 p-2 rounded-md text-s8">
+                                        <img 
+                                        src={products[item.id].image} alt="" 
+                                        className="w-[100px]"
+                                        />
+                                        <p>{item.nome} - RS {item.preco}</p>
+                                    </div>
                                 ))}
                             </div>
                             }

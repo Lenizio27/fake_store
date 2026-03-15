@@ -42,7 +42,8 @@ const Categorias = () => {
         const produtoSelecionado = {
                 id: product.id,
                 nome: product.title,
-                preco: product.price
+                preco: product.price,
+                image: product.image
         };
         // Chamamos a função que você acabou de colocar no código
         salvarNoBackEnd(produtoSelecionado);
@@ -96,11 +97,11 @@ const Categorias = () => {
         <>
         <section className="max-w-[1440px] m-auto px-4">
                 <div>
-                        <section className="flex h-[500px]">
+                        <section className="flex h-[500px] max-md:flex-col">
                                 <div className="w-full flex items-center justify-center bg-s7">
                                        <img src={product?.image} alt={product?.title} className="w-[200px]"/>
                                 </div>
-                                <div className="w-[700px]">
+                                <div className="w-[700px] max-lg:w-full max-lg:my-7">
                                         <h2 className="font-bold text-[32px]">{product?.title}</h2>
                                         <p>{product?.category}</p>
                                         <p className="pi pi-eye text-c1"></p>
@@ -117,7 +118,7 @@ const Categorias = () => {
                                         </button>
                                 </div>
                         </section>
-                        <section className="">
+                        <section className="my-[200px]">
                                 <Sections
                                 titleAlign={"left"}
                                 title={"Coleções em destaque"}

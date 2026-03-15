@@ -1,8 +1,7 @@
-import ImgTenisVermelho from "../assets/images/tenis_1.png"
-import ImgTenisAmarelo from "../assets/images/tenis_4.png"
-
 import { useState, useEffect} from "react";
 import { getProducts } from "../services/apis";
+import { NavLink } from "react-router-dom";
+
 
 export const SectionHero = () => {
     const [products, setProducts] = useState([]);
@@ -36,10 +35,12 @@ export const SectionHero = () => {
                         <p>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse officia temporibus accusamus soluta
                         </p>
-                         <button
-                            className="flex items-center justify-center text-s7 h-[22px] bg-c2 px-14 py-5 rounded-md my-5 max-md:w-full">
-                                Ver Ofertas
-                        </button>
+                         <NavLink to={"/product/3"}>
+                            <button
+                                className="flex items-center justify-center text-s7 h-[22px] bg-c2 px-14 py-5 rounded-md my-5 max-md:w-full">
+                                    Ver Ofertas
+                            </button>
+                         </NavLink>
                     </div>
                     <div className="flex-1 flex justify-center items-center p-2 ">
                         <img src={products[2]?.image} alt="" className="max-md:w-[300px]"/>
@@ -106,10 +107,12 @@ export const SectionOfertaEspecial = ({}) => {
                         <p>
                             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus nihil quas obcaecati quae molestiae soluta nam reprehenderit sunt nemo. Id nesciunt ut voluptas dolores voluptatem atque doloribus! Alias, modi facilis?
                         </p>
-                        <button
-                            className="flex items-center justify-center text-s7 h-[22px] bg-c2 px-14 py-5 rounded-md my-5 max-md:w-full w-[200px]">
-                                Ver Oferta
-                        </button>
+                        <NavLink to={"/product/12"}>
+                            <button
+                                className="flex items-center justify-center text-s7 h-[22px] bg-c2 px-14 py-5 rounded-md my-5 max-md:w-full w-[200px]">
+                                    Ver Oferta
+                            </button>
+                        </NavLink>
                     </div>
                 </div>
             </section>

@@ -22,25 +22,29 @@ const [loading, setLoading] = useState(false);
         }
         fetchItems();
     }, []);
+
     if(loading) return <p className="h-[calc(100vh-70px)] w-[100%] flex items-center justify-center ">
-            <span className="pi pi-spin pi-spinner-dotted text-[50px]"></span>
-            </p>;
+    <span className="pi pi-spin pi-spinner-dotted text-[50px]"></span>
+    </p>;
 
     const arrayCards = [
         {
             discount: "30% OFF",
             title: "Novo drop Supreme",
-            image: products[0]?.image
+            image: products[0]?.image,
+            navegation: "/product/1"
         },
         {
             discount: "30% OFF",
             title: "Coleção",
-            image: products[1]?.image
+            image: products[1]?.image,
+            navegation: "/product/2"
         },
         {
             discount: "30% OFF",
             title: "Novo Beats Bass",
-            image: products[2]?.image
+            image: products[15]?.image,
+            navegation: "/product/16"
         },
     ]
 
@@ -79,6 +83,7 @@ const [loading, setLoading] = useState(false);
                                 discount={item.discount}
                                 title={item.title}
                                 image={item.image}
+                                navegation={item.navegation}
                             />
                         ))}
                     </Sections>

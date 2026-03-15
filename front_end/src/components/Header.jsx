@@ -80,8 +80,8 @@ const Header = () => {
                 <div className="flex items-center justify-between w-full py-5">
                     <Logo className="flex-6" open={true}/>
                     <div className="w-[500px] flex-1 relative">
-                        <input placeholder="Pesquisar produto..." type="text" className=" pl-5 bg-s6  h-[60px] rounded-md w-full" />
-                        <i className="pi pi-search absolute right-4 top-5 text-[20px] text-s5"></i>
+                        {/*<input placeholder="Pesquisar produto..." type="text" className=" pl-5 bg-s6  h-[60px] rounded-md w-full" />
+                        <i className="pi pi-search absolute right-4 top-5 text-[20px] text-s5"></i>*/}
                     </div>
                     <div className="flex gap-6 items-center px-8">
                         <NavLink to={"/CreateAccountPage"}>
@@ -99,7 +99,7 @@ const Header = () => {
                         <i 
                         className="pi pi-shopping-cart text-[25px] cursor-pointer" 
                         onClick={() => SetOpenCart(!openCart)}></i>
-                        <div className={`absolute top-0 right-0 w-[15px] h-[15px] bg-c1 rounded-lg text-center text-[10px] text-s7 cursor-pointer`}
+                        <div className={`absolute top-0 right-0 w-[15px] h-[15px] bg-c1 rounded-lg text-center text-[12px] font-extrabold text-s7 cursor-pointer`}
                         onClick={() => SetOpenCart(!openCart)}>
                             {itensCarrinho.length}
                         </div>
@@ -134,13 +134,13 @@ const Header = () => {
                 onClick={() => menuOpen(!open)}></div>
                 <LogoMobile open={true}/>
                 <div className="flex gap-5">
-                    <div className="pi pi-search text-[20px] cursor-pointer"></div>
+                    {/*<div className="pi pi-search text-[20px] cursor-pointer"></div>*/}
                     <div 
                         className="relative px-1 cursor-pointer"
                         >
                         <i className="pi pi-shopping-cart text-[20px]"
                         onClick={()=> SetOpenCart(!openCart)}></i>
-                        <div className="absolute top-0 right-0 w-[15px] h-[15px] bg-c1 rounded-lg text-center text-[10px] text-s7"
+                        <div className="absolute top-0 right-0 w-[15px] h-[15px] bg-c1 rounded-lg text-center text-[12px] font-extrabold text-s7"
                         onClick={()=> SetOpenCart(!openCart)}>
                             {itensCarrinho.length}
                         </div>
