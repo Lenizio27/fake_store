@@ -20,5 +20,5 @@ Uma plataforma de e-commerce moderna e responsiva construída para simular a exp
 - **Vite**: Ferramenta de build para um desenvolvimento ágil.
 
 ## 📦 Veja o Projeto
-[Acesse o site clicando aqui](https://dripstore-lenizio.vercel.app/)
+[Acesse o site clicando aqui](https://dripstore-eshmsd36m-lenizio.vercel.app/)
 ![Visualização do Projeto](./assets/HomePageImage.png)
