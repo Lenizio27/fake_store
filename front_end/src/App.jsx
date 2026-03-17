@@ -7,7 +7,7 @@ function App() {
     // Função para buscar o carrinho que está guardado lá no servidor
     const buscarCarrinhoSalvo = async () => {
         try {
-            const response = await fetch('http://localhost:3000/cart/lenizio');
+            const response = await fetch('https://fake-store-2cja.onrender.com/cart/lenizio');
             const dados = await response.json();
             
             // Se o servidor devolveu algo, colocamos no nosso estado do React

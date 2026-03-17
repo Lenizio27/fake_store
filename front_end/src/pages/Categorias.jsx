@@ -24,7 +24,7 @@ const Categorias = () => {
 
         try {
                 // 2. Usamos Template String (as crases ` `) para colocar o ID na URL
-                const response = await fetch(`http://localhost:3000/cart/${userId}`, {
+                const response = await fetch(`https://fake-store-2cja.onrender.com/cart/${userId}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(produto)

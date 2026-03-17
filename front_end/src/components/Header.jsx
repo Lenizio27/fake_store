@@ -46,7 +46,7 @@ const Header = () => {
             const userId = localStorage.getItem('userId');
             if (!userId) return;
 
-            const response = await fetch(`http://localhost:3000/cart/${userId}`);
+            const response = await fetch(`https://fake-store-2cja.onrender.com/cart/${userId}`);
             const data = await response.json();
             setItensCarrinho(data);
         };
