@@ -75,7 +75,7 @@ const ProductViewPage = () => {
     
     return ( 
         <>
-         <section className="bg-s8 ">
+         <section className="bg-s6 ">
                 <div className="flex m-auto p-4 max-w-[1440px] gap-4">
                     <section className="w-[334px]">
                         <div className="flex flex-col gap-4 items-start p-4 bg-s7 rounded-lg">
@@ -101,12 +101,13 @@ const ProductViewPage = () => {
                                 {
                                 itensCarrinho == "" ? "nenhum produto adicionado ainda" : 
                                 itensCarrinho.map(item => (
-                                    <div className="flex bg-c2 m-2 p-2 rounded-md text-s8">
+                                    <div className="relative flex bg-c4 m-2 p-2 rounded-md text">
                                         <img 
                                         src={products[item.id].image} alt="" 
                                         className="w-[100px]"
                                         />
-                                        <p>{item.nome} - RS {item.preco}</p>
+                                        <p>{item.nome}</p>
+                                        <p className="text-[35px] absolute right-2 bottom-0">- RS {item.preco}</p>
                                     </div>
                                 ))}
                             </div>

@@ -109,7 +109,7 @@ const [loading, setLoading] = useState(false);
                     titleAlign={"left"}
                     title={"Produtos em alta"}
                     link={{href:"",text:"ver todos ->"}}>
-                        <div className="flex flex-wrap items-center justify-between">
+                        <div className="flex flex-wrap justify-around items-center max-sm:justify-center gap-3">
                             {arrayCardsEmAlta.map(item => (
                                 <CardProdutosEmAlta
                                     image={item.image}

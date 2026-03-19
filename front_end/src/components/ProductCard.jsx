@@ -40,11 +40,13 @@ export const CardProdutosEmAlta = (props) => {
     return (
         <>
             <NavLink to={`/product/${props.id}`}>
-                <section className="w-[292px] h-[439px] max-md:w-[163px] max-md:h-[300px]">
-                    <div className="relative flex items-center justify-center bg-s7 w-full h-[321px] max-md:h-[200px]">
-                        <img src={props.image} alt="" className="w-[200px] max-md:w-[120px]"/>
+                <section className="w-[290px] h-[439px] max-md:h-[350px] my-2 max-sm:w-auto">
+                    <div 
+                    className="relative flex items-center justify-center bg-s7 w-full h-[321px] max-md:h-[300px]"
+                    >
+                        <img src={props.image} alt="" className="w-[200px] max-md:w-[35%]"/>
                     </div>
-                    <div>
+                    <div className="py-3">
                         <p>{props.type}</p>
                         <h2>{props.title}</h2>
                         <h3>R$ {props.price}</h3>

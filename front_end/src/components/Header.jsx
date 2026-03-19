@@ -103,10 +103,14 @@ const Header = () => {
                         onClick={() => SetOpenCart(!openCart)}>
                             {itensCarrinho.length}
                         </div>
-                        <div className={`absolute w-[300px] right-0 top-[40px] bg-b2 text-white text-[20px] transition-all ${openCart ? "opacity-100" : "opacity-0 w-0 h-0 right-20 hidden"} flex-col p-4 rounded-md z-10`}>
+                        <div className={`absolute w-[300px] right-0 top-[40px] bg-b2 text-white text-[20px] transition-all ${openCart ? "opacity-100" : "opacity-0 w-0 h-0 right-20 hidden"} flex-col p-4 rounded-md z-10 overflow-hidden`}>
                             <p>Meu Carrinho</p>
                                 {itensCarrinho.map(item => (
-                                    <p>{item.nome} - RS {item.preco}</p>
+                                    <div className="">
+                                        <hr />
+                                        <img src={item.image} alt="" className="w-8 inline my-2"/>
+                                        <p className="inline"> - {item.nome} - RS {item.preco}</p>
+                                    </div>
                                 ))}
                         </div>
                     </div>

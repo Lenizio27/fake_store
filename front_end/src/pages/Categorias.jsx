@@ -123,7 +123,7 @@ const Categorias = () => {
                                 titleAlign={"left"}
                                 title={"Coleções em destaque"}
                                 link={""}
-                                estilo={"flex flex-wrap gap-3"}
+                                estilo={"flex flex-wrap gap-3 justify-around"}
                                 >
                                 {arrayCardsEmAlta.map((item) => (
                                         <CardProdutosEmAlta 
