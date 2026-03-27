@@ -1,10 +1,5 @@
 # 🛒 Digital Store - Fake Store Project
 
-Este repositório é destinado a projetos de cursos, iniciativas pessoais e ideias em desenvolvimento, além de servir como espaço para aprender e dominar novas tecnologias.
-Cada projeto terá o seu próprio README com informações detalhadas.
-Os links para acessar cada projeto estarão disponíveis logo abaixo.
-Agradeço desde já o interesse em acompanhar meus projetos e minha evolução.
-
 Uma plataforma de e-commerce moderna e responsiva construída para simular a experiência real de uma loja digital. O projeto consome uma API de produtos e oferece funcionalidades avançadas de filtragem e navegação.
 
 ## 🚀 Funcionalidades
