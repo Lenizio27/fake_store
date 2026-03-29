@@ -6,7 +6,7 @@ Uma plataforma de e-commerce moderna e responsiva construída para simular a exp
 - **Listagem Dinâmica:** Renderização de produtos a partir de uma API externa.
 - **Sistema de Filtros:** Filtragem inteligente por categorias utilizando botões do tipo `Radio`.
 - **Design Responsivo:** Interface adaptável para dispositivos móveis e desktop.
-- **UX Otimizada:** Loadings de transição e gerenciamento de estado eficiente com React Hooks.
+- **UX Otimizada:** Loadings de transição e gerenciamento de estado eficiente com Reacnt Hooks.
 
 ## 🛠️ Tecnologias Utilizadas
 - **React.js**: Biblioteca principal para construção da interface.
